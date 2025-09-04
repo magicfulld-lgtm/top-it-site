@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Мадаминов Дамир — Сайт‑визитка для ТОП‑ИТ</title>
+  <meta name="description" content="Сайт‑визитка абитуриента ТОП‑ИТ: Мадаминов Дамир, группа 8К52, Программная инженерия, 1 курс." />
+  <style>
+    :root{
+      --bg-a:#f0fff0; /* светло-зелёный градиент (пожелание) */
+      --bg-b:#e0ffe0;
+      --ink:#0f172a; /* почти чёрный */
+      --muted:#5b6476;
+      --brand:#12a150; /* изумрудный для акцентов */
+      --card:#ffffffcc;
+      --ring:#a7f3d0;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; color:var(--ink); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      background:linear-gradient(160deg,var(--bg-a),var(--bg-b));
+    }
+    /* Шапка */
+    .nav{
+      position:sticky; top:0; z-index:100; backdrop-filter:saturate(1.2) blur(10px);
+      background:linear-gradient(160deg,#ffffffaa,#ffffff80);
+      border-bottom:1px solid #ffffff88;
+    }
+    .wrap{max-width:1120px; margin:0 auto; padding:0 20px}
+    .nav__inner{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .brand{display:flex; gap:12px; align-items:center; text-decoration:none; color:inherit}
+    .logo{width:36px; height:36px; border-radius:12px; background:conic-gradient(from 210deg, #10b981, #34d399, #6ee7b7, #10b981); box-shadow:var(--shadow)}
+    .brand span{font-weight:700}
+    .menu{display:flex; gap:14px; flex-wrap:wrap}
+    .menu a{padding:10px 12px; border-radius:12px; text-decoration:none; color:var(--ink)}
+    .menu a:hover{background:#ffffffcc}
+
+    /* Хиро */
+    .hero{padding:72px 0 32px}
+    .hero__card{
+      display:grid; grid-template-columns:120px 1fr; gap:20px; align-items:center;
+      background:var(--card); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow);
+      border:1px solid #ffffff; outline:1px solid #00000010;
+    }
+    .avatar{
+      width:120px; height:120px; border-radius:20px; background:#d1fae5;
+      display:grid; place-items:center; font-weight:800; color:#065f46; border:2px solid var(--ring)
+    }
+    .tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+    .tag{font-size:12px; padding:6px 10px; background:#ffffff; border:1px solid var(--ring); border-radius:999px}
+    .cta{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:8px; background:var(--brand); color:#fff; padding:10px 14px; border-radius:12px; border:none; cursor:pointer; text-decoration:none; box-shadow:var(--shadow)}
+    .btn--ghost{background:#ffffff; color:var(--ink); border:1px solid var(--ring)}
+
+    /* Секции */
+    section{padding:36px 0}
+    h2{margin:0 0 14px; font-size:28px}
+    .grid{display:grid; gap:16px}
+    .card{background:var(--card); padding:18px; border-radius:var(--radius); border:1px solid #ffffff; outline:1px solid #00000010; box-shadow:var(--shadow)}
+    .muted{color:var(--muted)}
+
+    /* Портфолио */
+    .gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px}
+    .ph{
+      aspect-ratio:4/3; border-radius:14px; background:#e7f9ef; border:2px dashed var(--ring);
+      display:flex; align-items:center; justify-content:center; text-align:center; padding:10px; color:#059669; font-size:14px
+    }
+
+    /* Видео */
+    .video{
+      position:relative; padding-top:56.25%; border-radius:16px; overflow:hidden; background:#00000010; border:1px solid #ffffff; outline:1px solid #00000010
+    }
+    .video iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+
+    /* Футер */
+    footer{padding:32px 0 56px; color:#0b3b24}
+    footer .foot{display:grid; gap:12px; background:#ffffffc0; border:1px solid #ffffff; outline:1px solid #00000010; border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)}
+
+    /* Адаптив */
+    @media (max-width:720px){
+      .hero__card{grid-template-columns:1fr}
+      .avatar{justify-self:center}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="brand" href="#top" aria-label="На главную">
+        <div class="logo" aria-hidden="true"></div>
+        <span>Дамир Мадаминов</span>
+      </a>
+      <nav class="menu" aria-label="Основная навигация">
+        <a href="#about">О себе</a>
+        <a href="#motivation">Мотивация</a>
+        <a href="#portfolio">Портфолио</a>
+        <a href="#video">Видеоэссе</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <!-- Хиро -->
+    <section class="hero">
+      <div class="hero__card">
+        <div class="avatar" aria-label="Фото">
+          DM
+        </div>
+        <div>
+          <h1 style="margin:0 0 6px; font-size:32px">Мадаминов Дамир</h1>
+          <p style="margin:0">Студент группы <b>8К52</b> · Бакалавриат · <b>Программная инженерия</b> · <b>1 курс</b></p>
+          <div class="tags">
+            <span class="tag">HTML · CSS · JS</span>
+            <span class="tag">Алгоритмы</span>
+            <span class="tag">Командная работа</span>
+            <span class="tag">ТОП‑ИТ 2025</span>
+          </div>
+          <div class="cta">
+            <a class="btn" href="#motivation">Моё мотивационное письмо</a>
+            <a class="btn btn--ghost" href="#portfolio">Портфолио 2023–2025</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- О СЕБЕ -->
+    <section id="about">
+      <h2>О себе</h2>
+      <div class="grid">
+        <article class="card">
+          <p>Я — Дамир, первокурсник направления «Программная инженерия» Томского политехнического университета (группа 8К52). Интересуюсь разработкой пользовательских интерфейсов и инженерией программного обеспечения: от проектирования архитектуры до доводки UI.
+          </p>
+          <p class="muted">Сейчас прокачиваю основы веб‑разработки (HTML, CSS, JavaScript), практикуюсь с алгоритмами и читаю про паттерны проектирования. Люблю аккуратный код и понятную структуру проектов.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- МОТИВАЦИОННОЕ ПИСЬМО -->
+    <section id="motivation">
+      <h2>Мотивационное письмо</h2>
+      <div class="grid">
+        <article class="card">
+          <h3 style="margin-top:0">Почему именно меня стоит взять на программу ТОП‑ИТ?</h3>
+          <p>Я осознанно выбрал программную инженерию и готов подтверждать мотивацию делом. Я умею быстро разбираться с новыми инструментами, довожу задачи до результата и не боюсь ответственности. В проектной работе беру на себя организацию: разбиваю задачи, слежу за сроками, поддерживаю команду и документацию.</p>
+          <p>Вместо «магии» предпочитаю системный подход: читаю первоисточники, проверяю гипотезы и оформляю выводы. Для меня важно не только «что» сделать, но и «как» — чтобы решение было надёжным, расширяемым и понятным другим.</p>
+        </article>
+        <article class="card">
+          <h3 style="margin-top:0">Как я вижу своё будущее в IT?</h3>
+          <p>В ближайшие два года — углубиться во фронтенд и основы бэкенда, освоить типизацию, тестирование и CI/CD. Дальше — развиваться до уровня инженера, который уверенно ведёт фичи от постановки до релиза и участвует в архитектурных решениях. Интересны продуктовые команды, где ценят качество кода и пользовательский опыт.</p>
+          <p>Программа ТОП‑ИТ — возможность получить наставничество, практические кейсы и обратную связь индустрии. Я готов вкладываться в обучение и командные проекты, чтобы расти быстрее и приносить ощутимую пользу.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ПОРТФОЛИО -->
+    <section id="portfolio">
+      <h2>Опыт и портфолио (2023–2025)</h2>
+      <div class="card">
+        <p class="muted" style="margin-top:0">Здесь будут фотографии дипломов/сертификатов и ссылки на проекты. Сейчас раздел подготовлен как шаблон — позже добавим сканы и описания.</p>
+        <div class="gallery" aria-label="Галерея дипломов и достижений">
+          <div class="ph">Добавьте изображение диплома<br/> (png/jpg, 4×3)</div>
+          <div class="ph">Добавьте изображение диплома<br/> (png/jpg, 4×3)</div>
+          <div class="ph">Добавьте изображение диплома<br/> (png/jpg, 4×3)</div>
+          <div class="ph">Добавьте изображение диплома<br/> (png/jpg, 4×3)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ВИДЕОЭССЕ -->
+    <section id="video">
+      <h2>Видеоэссе (до 3 минут)</h2>
+      <div class="card">
+        <p style="margin-top:0">Когда видео будет готово, вставьте ссылку YouTube или файл. Ниже заготовка с примером встраивания ролика:</p>
+        <div class="video">
+          <!-- Пример: замените ID после embed/ на собственный -->
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Видеоэссе — Мадаминов Дамир" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section id="contacts">
+      <h2>Контакты</h2>
+      <div class="grid">
+        <div class="card">
+          <p style="margin:.2rem 0"><b>E‑mail:</b> <a href="mailto:dzm2@tpu.ru">dzm2@tpu.ru</a></p>
+          <p style="margin:.2rem 0"><b>Телефон:</b> <a href="tel:+79935705772">+7 993 570‑57‑72</a></p>
+          <p class="muted" style="margin:.6rem 0 0">Готов оперативно выйти на связь и прислать дополнительные материалы по запросу.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <small>Сайт‑визитка подготовлен для участия в конкурсном отборе программ ТОП‑ИТ (ТПУ). Последнее обновление: <span id="updated"></span>.</small>
+      <div class="muted">При частичном использовании материалов ссылка на сайт ТПУ обязательна.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Дата обновления (локально в браузере)
+    document.getElementById('updated').textContent = new Date().toLocaleDateString('ru-RU', {year:'numeric', month:'long', day:'numeric'});
+
+    // Небольшой эффект появления карточек
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.animate([
+          {opacity:0, transform:'translateY(10px)'},
+          {opacity:1, transform:'translateY(0)'}
+        ], {duration:450, easing:'ease-out', fill:'forwards'}); io.unobserve(e.target); }
+      })
+    }, {threshold:.12});
+    document.querySelectorAll('.card, .hero__card').forEach(el=> io.observe(el));
+  </script>
+</body>
+</html>
