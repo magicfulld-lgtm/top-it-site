@@ -192,6 +192,22 @@ footer .foot{display:grid; gap:12px; background:#ffffffc0; border:1px solid #fff
   .avatar{justify-self:center}
   .menu{justify-content:center; gap:8px;}
 }
+/* Исправление меню на мобильных */
+@media (max-width:720px){
+  .menu {
+    flex-wrap: nowrap;        /* запрещаем перенос */
+    overflow-x: auto;         /* разрешаем горизонтальный скролл */
+    -webkit-overflow-scrolling: touch; /* плавный скролл для iOS */
+    gap: 10px;
+  }
+  .menu::-webkit-scrollbar {
+    display: none; /* убираем полоску прокрутки */
+  }
+  .menu-item {
+    flex: 0 0 auto;           /* фиксируем ширину у кнопок */
+  }
+}
+
 </style>
 </head>
 <body>
@@ -428,5 +444,6 @@ lightbox.addEventListener('click', (e)=>{
 </script>
 </body>
 </html>
+
 
 
