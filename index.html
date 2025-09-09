@@ -6,6 +6,7 @@
 <title>Мадаминов Дамир — Сайт-визитка ТОП-ИТ</title>
 <meta name="description" content="Сайт-визитка абитуриента ТОП-ИТ: Мадаминов Дамир, группа 8К52, Программная инженерия, 1 курс.">
 <style>
+/* ===== Основные переменные ===== */
 :root{
   --bg-a:#f0fff0;
   --bg-b:#e0ffe0;
@@ -20,35 +21,23 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0; color:var(--ink); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-  background:linear-gradient(160deg,var(--bg-a),var(--bg-b));
+  margin:0; font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  color:var(--ink); background:linear-gradient(160deg,var(--bg-a),var(--bg-b));
 }
-/* Шапка */
+
+/* ===== Шапка ===== */
 .nav{
   position:sticky; top:0; z-index:100; backdrop-filter:saturate(1.2) blur(10px);
-  background:linear-gradient(160deg,#ffffffaa,#ffffff80);
-  border-bottom:1px solid #ffffff88;
+  background:linear-gradient(160deg,#ffffffaa,#ffffff80); border-bottom:1px solid #ffffff88;
 }
 .wrap{max-width:1120px; margin:0 auto; padding:0 20px}
-.nav__inner{display:flex; align-items:center; justify-content:space-between; height:64px; position:relative}
+.nav__inner{display:flex; align-items:center; justify-content:space-between; height:64px}
 .brand{display:flex; gap:12px; align-items:center; text-decoration:none; color:inherit}
-.brand-logo {
-  width:36px;
-  height:36px;
-  border-radius:8px;
-  margin-right:8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
-}
+.brand-logo { width:36px; height:36px; border-radius:8px; margin-right:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2); transition: transform 0.3s ease; }
 .brand-logo:hover { transform: scale(1.1); }
-.brand span{font-weight:700}
 
-/* Бургер */
-.burger{
-  display:flex;           /* теперь видна всегда */
-  align-items:center; justify-content:center; gap:4px;
-  width:46px; height:46px; border-radius:10px; border:none; background:transparent; cursor:pointer;
-}
+/* ===== Бургер-меню ===== */
+.burger{display:flex; align-items:center; justify-content:center; gap:4px; width:46px; height:46px; border:none; background:transparent; cursor:pointer}
 .burger:focus{outline:2px solid var(--ring); outline-offset:3px}
 .burger .bar{display:block; width:20px; height:2px; background:var(--ink); border-radius:2px; transition:transform .25s ease, opacity .2s ease}
 .burger .bar + .bar{margin-top:4px}
@@ -56,91 +45,76 @@ body{
 .burger.open .bar.mid{ opacity:0; transform:scaleX(0); }
 .burger.open .bar.bot{ transform: translateY(-6px) rotate(-45deg); }
 
-/* Меню (скрыто по умолчанию) */
+/* ===== Меню ===== */
 .menu{
-  display:flex; /* flex контейнер, но скрыт визуально через opacity/visibility */
-  gap:14px; flex-wrap:wrap; position:absolute; right:20px; top:64px; z-index:110;
+  display:flex; gap:14px; flex-wrap:wrap; position:absolute; right:20px; top:64px; z-index:110;
   background:linear-gradient(180deg,#ffffffee,#ffffffcc); padding:12px; border-radius:12px; box-shadow:0 12px 30px rgba(0,0,0,0.18);
   min-width:220px; align-items:center; justify-content:center;
-
   opacity:0; visibility:hidden; transform:translateY(-6px);
   transition: opacity .22s ease, transform .22s ease, visibility .22s;
 }
 .nav.open .menu{ opacity:1; visibility:visible; transform:translateY(0); }
-
-/* Стили пунктов меню */
-.menu-item {
-  padding: 8px 14px; border-radius:50px; background:#ffffffcc; color:var(--ink); text-decoration:none; font-weight:600;
+.menu-item{
+  padding:8px 14px; border-radius:50px; background:#ffffffcc; color:var(--ink); text-decoration:none; font-weight:600;
   transition: transform .2s ease, background .2s ease, box-shadow .2s ease; display:inline-block;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
 }
 .menu-item:hover{ transform:scale(1.05); background:var(--brand); color:#fff; box-shadow:0 8px 20px rgba(18,161,80,0.25)}
+@media (max-width:720px){.menu{flex-direction:column; right:12px; left:12px; top:64px; min-width:unset;}.menu-item{width:100%; text-align:center; border-radius:12px}}
 
-/* Мобильная версия: меню — колонка */
-@media (max-width:720px){
-  .menu{ flex-direction:column; right:12px; left:12px; top:64px; min-width:unset; }
-  .menu-item{ width:100%; text-align:center; border-radius:12px }
-}
-
-/* Хиро */
+/* ===== Хиро ===== */
 .hero{padding:72px 0 32px}
-.hero__card{ display:grid; grid-template-columns:120px 1fr; gap:20px; align-items:start; background:var(--card); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow); border:1px solid #ffffff; outline:1px solid #00000010; }
-.avatar { width:120px; height:120px; border-radius:20px; border:2px solid var(--ring); overflow:hidden; display:block; box-shadow: 0 0 15px 3px rgba(18,161,80,0.5); transition: transform 0.5s ease, box-shadow 0.5s ease; }
-.avatar img{ width:100%; height:100%; object-fit:cover; object-position: top; display:block; transition: transform 0.5s ease }
-.avatar:hover{ transform: scale(1.1) rotate(-5deg); box-shadow: 0 10px 30px rgba(18,161,80,0.7); }
+.hero__card{ display:grid; grid-template-columns:120px 1fr; gap:20px; align-items:start; background:var(--card); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow); border:1px solid #fff; outline:1px solid #00000010; }
+.avatar{ width:120px; height:120px; border-radius:20px; border:2px solid var(--ring); overflow:hidden; display:block; box-shadow: 0 0 15px 3px rgba(18,161,80,0.5); transition: transform 0.5s ease, box-shadow 0.5s ease; }
+.avatar img{ width:100%; height:100%; object-fit:cover; object-position:top; display:block; transition: transform 0.5s ease }
+.avatar:hover{ transform: scale(1.1) rotate(-5deg); box-shadow:0 10px 30px rgba(18,161,80,0.7); }
 
-/* Теги и кнопки */
+/* ===== Теги и кнопки ===== */
 .tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
-.tag{ font-size:14px; padding:10px 16px; border:2px solid var(--ring); border-radius:16px; background:var(--card); font-weight:600; transition: transform 0.3s ease, box-shadow 0.3s ease }
+.tag{font-size:14px; padding:10px 16px; border:2px solid var(--ring); border-radius:16px; background:var(--card); font-weight:600; transition: transform 0.3s ease, box-shadow 0.3s ease }
 .tag:hover{ transform: scale(1.05); box-shadow: 0 6px 20px rgba(18,161,80,0.4); }
 .cta{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
 .btn{display:inline-flex; align-items:center; gap:8px; background:var(--brand); color:#fff; padding:10px 14px; border-radius:12px; border:none; cursor:pointer; text-decoration:none; box-shadow:var(--shadow)}
 .btn--ghost{background:#ffffff; color:var(--ink); border:1px solid var(--ring)}
 
-/* Секции */
+/* ===== Секции ===== */
 section{padding:36px 0}
 h2{margin:0 0 14px; font-size:28px}
 .grid{display:grid; gap:16px}
-.card{background:var(--card); padding:18px; border-radius:var(--radius); border:1px solid #ffffff; outline:1px solid #00000010; box-shadow:var(--shadow)}
+.card{background:var(--card); padding:18px; border-radius:var(--radius); border:1px solid #fff; outline:1px solid #00000010; box-shadow:var(--shadow)}
 .muted{color:var(--muted)}
-.gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px}
-.ph{ aspect-ratio:4/3; border-radius:14px; background:#e7f9ef; border:2px dashed var(--ring); display:flex; align-items:center; justify-content:center; text-align:center; padding:10px; color:#059669; font-size:14px }
-.video{ border-radius:16px; overflow:hidden; background:#00000010; border:1px solid #ffffff; outline:1px solid #00000010; }
-.video video{ width:100%; height:auto; display:block }
+.gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px}
+.portfolio-img{width:100%; height:auto; display:block;}
 
-/* Плавающие элементы */
-@keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
-.float-icon { font-size:28px; display:inline-block; transition: transform 0.3s ease, color 0.3s ease; animation: float 2s ease-in-out infinite; }
-.float-icon:hover { transform: translateY(-6px) scale(1.3) rotate(-10deg); color: var(--brand); }
+/* ===== Плавающие элементы ===== */
+@keyframes float { 0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);} }
+.float-icon{font-size:28px; display:inline-block; animation: float 2s ease-in-out infinite; transition: transform 0.3s ease, color 0.3s ease;}
+.float-icon:hover{transform:translateY(-6px) scale(1.3) rotate(-10deg); color: var(--brand);}
 
-/* Футер */
+/* ===== Футер ===== */
 footer{padding:32px 0 56px; color:#0b3b24}
-footer .foot{display:grid; gap:12px; background:#ffffffc0; border:1px solid #ffffff; outline:1px solid #00000010; border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)}
+footer .foot{display:grid; gap:12px; background:#ffffffc0; border:1px solid #fff; outline:1px solid #00000010; border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)}
 
-/* Появление при скролле */
-.fade-up { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out }
-.fade-up.show { opacity: 1; transform: translateY(0) }
-
+/* ===== Появление при скролле ===== */
+.fade-up{opacity:0; transform:translateY(20px); transition: all 0.8s ease-out}
+.fade-up.show{opacity:1; transform:translateY(0);}
 </style>
 </head>
 <body>
 
+<!-- ===== Шапка ===== -->
 <header class="nav" id="site-nav">
   <div class="wrap nav__inner">
-    <a class="brand" href="#top" aria-label="На главную">
+    <a class="brand" href="#top">
       <img src="tpu_logo.png" alt="ТПУ" class="brand-logo">
       <span>Дамир Мадаминов</span>
     </a>
-
-    <!-- Бургер (виден всегда) -->
     <button id="burger" class="burger" aria-label="Открыть меню" aria-controls="main-menu" aria-expanded="false">
       <span class="bar top"></span>
       <span class="bar mid"></span>
       <span class="bar bot"></span>
     </button>
-
-    <!-- Навигация (скрыта по умолчанию) -->
-    <nav id="main-menu" class="menu" aria-label="Основная навигация">
+    <nav id="main-menu" class="menu">
       <a href="#about" class="menu-item">О себе</a>
       <a href="#motivation" class="menu-item">Мотивационное письмо</a>
       <a href="#portfolio" class="menu-item">Портфолио</a>
@@ -152,18 +126,14 @@ footer .foot{display:grid; gap:12px; background:#ffffffc0; border:1px solid #fff
 
 <main id="top" class="wrap">
 
-<!-- Хиро -->
+<!-- ===== Хиро ===== -->
 <section class="hero">
   <div class="hero__card">
-    <div class="avatar" aria-label="Фото">
-      <img src="твоя_фотка.jpg" alt="Мадаминов Дамир">
-    </div>
+    <div class="avatar"><img src="твоя_фотка.jpg" alt="Мадаминов Дамир"></div>
     <div>
-      <h1 style="margin:0 0 6px; font-size:32px">Мадаминов Дамир</h1>
-      <p style="margin:0">Студент группы <b>8К52</b> · Бакалавриат · <b>Программная инженерия</b> · <b>1 курс</b></p>
-      <div class="tags">
-        <div class="tag">Общий результат ЕГЭ: <b>239 баллов</b></div>
-      </div>
+      <h1>Мадаминов Дамир</h1>
+      <p>Студент группы <b>8К52</b> · Бакалавриат · <b>Программная инженерия</b> · <b>1 курс</b></p>
+      <div class="tags"><div class="tag">Общий результат ЕГЭ: <b>239 баллов</b></div></div>
       <div class="cta">
         <a class="btn" href="#motivation">Моё мотивационное письмо</a>
         <a class="btn btn--ghost" href="#portfolio">Портфолио 2023–2025</a>
@@ -172,81 +142,38 @@ footer .foot{display:grid; gap:12px; background:#ffffffc0; border:1px solid #fff
   </div>
 </section>
 
-<!-- О себе -->
+<!-- ===== Секции: о себе, мотивационное письмо, портфолио, видео, контакты ===== -->
 <section id="about" class="fade-up">
   <div style="max-width:800px; margin:0 auto; text-align:center;">
-    <h2 class="text-3xl font-bold mb-6">О себе</h2>
-    <p class="text-lg leading-relaxed text-gray-700">
-      Я выпускник 7 лицея города Томска, профильный класс «Физмат». В школе я особенно интересовался алгеброй и информатикой. Эти предметы стали для меня ключевыми: я участвовал в олимпиаде по информатике, прошёл до регионального этапа, а на ЕГЭ по информатике набрал 83 балла. Хотя мог показать лучший результат, для меня это стало важным подтверждением моих знаний.
-    </p>
-    <p class="text-lg leading-relaxed text-gray-700 mt-4">
-      Помимо учёбы, я активно занимаюсь спортом: являюсь кандидатом в мастера спорта по панкратиону и перворазрядником по рукопашному бою. Эти достижения не только про физическую силу, но и про дисциплину, ответственность и умение доводить начатое до конца. Всё это напрямую помогает мне в учёбе и развитии в IT.
-    </p>
-    <p class="text-lg leading-relaxed text-gray-700 mt-4">
-      Интерес к программированию у меня появился, когда я начал изучать язык Python при подготовке к ЕГЭ. Простота и логичность языка увлекли меня, и с этого момента я понял, что хочу связать своё будущее с IT.
-    </p>
+    <h2>О себе</h2>
+    <p>Я выпускник 7 лицея города Томска, профильный класс «Физмат». В школе я особенно интересовался алгеброй и информатикой. Эти предметы стали для меня ключевыми: я участвовал в олимпиаде по информатике, прошёл до регионального этапа, а на ЕГЭ по информатике набрал 83 балла. Хотя мог показать лучший результат, для меня это стало важным подтверждением моих знаний.</p>
+    <p>Помимо учёбы, я активно занимаюсь спортом: являюсь кандидатом в мастера спорта по панкратиону и перворазрядником по рукопашному бою. Эти достижения не только про физическую силу, но и про дисциплину, ответственность и умение доводить начатое до конца. Всё это напрямую помогает мне в учёбе и развитии в IT.</p>
+    <p>Интерес к программированию у меня появился, когда я начал изучать язык Python при подготовке к ЕГЭ. Простота и логичность языка увлекли меня, и с этого момента я понял, что хочу связать своё будущее с IT.</p>
   </div>
 </section>
 
-<!-- Мотивационное письмо -->
 <section id="motivation" class="fade-up">
   <div style="max-width:800px; margin:0 auto; text-align:center;">
-    <h2 class="text-3xl font-bold mb-6">Мотивационное письмо</h2>
-    <p class="text-lg leading-relaxed text-gray-700"><b>Почему на программу ТОП-ИТ должны взять именно меня?</b><br>
-    Я уверен, что могу принести ценность программе ТОП-ИТ благодаря своим качествам и стремлению к развитию. С детства я привык работать в режиме высокой нагрузки: являюсь кандидатом в мастера спорта по панкратиону и перворазрядником по рукопашному бою. Спорт научил меня дисциплине, ответственности и умению доводить начатое до конца. Эти же качества я использую и в учёбе — всегда работаю по расписанию, умею распределять время и сохранять концентрацию.
-    Кроме того, я быстро учусь и легко адаптируюсь к новым задачам. На уроках информатики в школе я всегда показывал хорошие результаты, участвовал в олимпиадах по информатике, прошёл до регионального этапа и получил важный опыт соревнований в интеллектуальной сфере. На ЕГЭ по информатике я набрал 83 балла, и для меня это стало подтверждением моего уровня и базы, на которую я могу опереться дальше.
-    Я мотивирован учиться именно в ТОП-ИТ, потому что понимаю: это шанс оказаться в сильной среде, где рядом со мной будут лучшие преподаватели и такие же целеустремлённые студенты.
-    </p>
-    <p class="text-lg leading-relaxed text-gray-700 mt-4"><b>Каким я вижу своё будущее в сфере ИТ?</b><br>
-    Моё ближайшее направление — углублённое изучение языка Python и развитие в программной инженерии. Я хочу приобрести опыт работы с современными инструментами, участвовать в проектах и создавать продукты, которые могут приносить пользу людям и компаниям.
-    В будущем я вижу себя в команде разработчиков, где важны ответственность, командная работа и умение доводить проект до результата. Постепенно я хочу развиваться до уровня ведущего специалиста (middle, а затем senior), чтобы иметь возможность не только писать код, но и выстраивать процессы разработки.
-    Также я рассматриваю возможность создать собственную команду, которая будет разрабатывать программные продукты для крупных компаний. Мне интересны веб-разработка и сфера кибербезопасности: эти направления востребованы, и я хочу приложить усилия, чтобы быть полезным в них.
-    Я понимаю, что путь в ИТ требует постоянной работы, и готов полностью посвятить себя этому. Для меня важно, чтобы обучение было системным и чётким, поэтому я рассчитываю, что программа ТОП-ИТ даст именно такую основу.
-    </p>
+    <h2>Мотивационное письмо</h2>
+    <p><b>Почему на программу ТОП-ИТ должны взять именно меня?</b></p> 
+Я уверен, что могу принести ценность программе ТОП-ИТ благодаря своим качествам и стремлению к развитию. С детства я привык работать в режиме высокой нагрузки: являюсь кандидатом в мастера спорта по панкратиону и перворазрядником по рукопашному бою. Спорт научил меня дисциплине, ответственности и умению доводить начатое до конца. Эти же качества я использую и в учёбе — всегда работаю по расписанию, умею распределять время и сохранять концентрацию. Кроме того, я быстро учусь и легко адаптируюсь к новым задачам. На уроках информатики в школе я всегда показывал хорошие результаты, участвовал в олимпиадах по информатике, прошёл до регионального этапа и получил важный опыт соревнований в интеллектуальной сфере. На ЕГЭ по информатике я набрал 83 балла, и для меня это стало подтверждением моего уровня и базы, на которую я могу опереться дальше. Я мотивирован учиться именно в ТОП-ИТ, потому что понимаю: это шанс оказаться в сильной среде, где рядом со мной будут лучшие преподаватели и такие же целеустремлённые студенты.</p>
+    <p><b>Каким я вижу своё будущее в ИТ?</b></p> 
+Моё ближайшее направление — углублённое изучение языка Python и развитие в программной инженерии. Я хочу приобрести опыт работы с современными инструментами, участвовать в проектах и создавать продукты, которые могут приносить пользу людям и компаниям. В будущем я вижу себя в команде разработчиков, где важны ответственность, командная работа и умение доводить проект до результата. Постепенно я хочу развиваться до уровня ведущего специалиста (middle, а затем senior), чтобы иметь возможность не только писать код, но и выстраивать процессы разработки. Также я рассматриваю возможность создать собственную команду, которая будет разрабатывать программные продукты для крупных компаний. Мне интересны веб-разработка и сфера кибербезопасности: эти направления востребованы, и я хочу приложить усилия, чтобы быть полезным в них. Я понимаю, что путь в ИТ требует постоянной работы, и готов полностью посвятить себя этому. Для меня важно, чтобы обучение было системным и чётким, поэтому я рассчитываю, что программа ТОП-ИТ даст именно такую основу.</p>
   </div>
 </section>
 
-<!-- Портфолио -->
 <section id="portfolio">
   <h2>Портфолио</h2>
-  <div class="gallery fade-up" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px;">
-
-    <div class="card portfolio-item">
-      <img src="спорт_2021.jpg" alt="Призовое место 2023" style="width:100%; height:auto; display:block;">
-      <p style="text-align:center; margin:8px 0 0; font-weight:600;">Призовое место 2023</p>
-    </div>
-    
-    <div class="card portfolio-item">
-      <img src="спорт_2022.jpg" alt="Призовое место 2023" style="width:100%; height:auto; display:block;">
-      <p style="text-align:center; margin:8px 0 0; font-weight:600;">Призовое место 2023</p>
-    </div>
-    
-    <div class="card portfolio-item">
-      <img src="спорт_2023.jpg" alt="Призовое место 2023" style="width:100%; height:auto; display:block;">
-      <p style="text-align:center; margin:8px 0 0; font-weight:600;">Призовое место 2023</p>
-    </div>
-    
-    <div class="card portfolio-item">
-      <img src="спорт_2024.jpg" alt="Призовое место 2024" style="width:100%; height:auto; display:block;">
-      <p style="text-align:center; margin:8px 0 0; font-weight:600;">Призовое место 2024</p>
-    </div>
-    
-    <div class="card portfolio-item">
-      <img src="спорт_2025.jpg" alt="Призовое место 2025" style="width:100%; height:auto; display:block;">
-      <p style="text-align:center; margin:8px 0 0; font-weight:600;">Призовое место 2025</p>
-    </div>
-
-    <!-- Перенесённые дипломы -->
-    <div class="card portfolio-item">
-      <img src="конкурс.jpg" alt="Диплом ВСОШ" style="width:100%; height:auto; display:block;">
-      <p style="text-align:center; margin:8px 0 0; font-weight:600;">Диплом ВСОШ</p>
-    </div>
-
-    <div class="card portfolio-item">
-      <img src="2 степень.jpg" alt="Диплом II степени Всеросс. Дист. Олимпиады" style="width:100%; height:auto; display:block;">
-      <p style="text-align:center; margin:8px 0 0; font-weight:600;">Диплом II степени Всеросс. Дист. Олимпиады</p>
-    </div>
-
+  <div class="gallery fade-up">
+    <div class="card portfolio-item"><img src="спорт_2021.jpg" class="portfolio-img" alt="Призовое место 2023"><p>Призовое место 2023</p></div>
+    <div class="card portfolio-item"><img src="спорт_2022.jpg" class="portfolio-img" alt="Призовое место 2023"><p>Призовое место 2023</p></div>
+    <div class="card portfolio-item"><img src="спорт_2023.jpg" class="portfolio-img" alt="Призовое место 2023"><p>Призовое место 2023</p></div>
+    <div class="card portfolio-item"><img src="спорт_2024.jpg" class="portfolio-img" alt="Призовое место 2024"><p>Призовое место 2024</p></div>
+    <div class="card portfolio-item"><img src="спорт_2025.jpg" class="portfolio-img" alt="Призовое место 2025"><p>Призовое место 2025</p></div>
+    <div class="card portfolio-item"><img src="конкурс.jpg" class="portfolio-img" alt="Диплом ВСОШ"><p>Диплом ВСОШ</p></div>
+    <div class="card portfolio-item"><img src="2 степень.jpg" class="portfolio-img" alt="Диплом II степени Всеросс. Дист. Олимпиады"><p>Диплом ВСОШ</p></div>
+  </div>
+</section>
   </div>
 
   <div style="margin-top:24px;">
@@ -287,27 +214,21 @@ footer .foot{display:grid; gap:12px; background:#ffffffc0; border:1px solid #fff
     </div>
   </div>
 </section>
-
-<!-- Видеоэссе -->
 <section id="video" class="fade-up">
   <h2>Видеоэссе</h2>
   <div class="video fade-up">
-    <video controls style="width:100%; border-radius:16px; box-shadow:0 0 20px rgba(0,0,0,0.2);">
-      <source src="videoesse.mp4" type="video/mp4">
-      Ваш браузер не поддерживает воспроизведение видео.
+    <video controls class="portfolio-img">
+      <source src="videoesse.mp4" type="video/mp4">Ваш браузер не поддерживает видео.
     </video>
   </div>
 </section>
 
-
-<!-- Контакты -->
 <section id="contacts" class="fade-up">
   <h2>Контакты</h2>
-  <div class="card" style="display:flex; flex-direction:column; gap:10px; align-items:flex-start;">
+  <div class="card" style="display:flex; flex-direction:column; gap:10px;">
     <p>Email: <a href="mailto:dzm2@tpu.ru">dzm2@tpu.ru</a></p>
     <p>Телефон: +7 (993) 570-57-72</p>
     <p>Telegram: <a href="https://t.me/madaminchyk">@madaminchyk</a></p>
-
     <div class="floating-icons" style="display:flex; gap:12px; margin-top:10px;">
       <a href="mailto:dzm2@tpu.ru" class="float-icon">📧</a>
       <a href="https://t.me/madaminchyk" class="float-icon">✈️</a>
@@ -324,82 +245,40 @@ footer .foot{display:grid; gap:12px; background:#ffffffc0; border:1px solid #fff
   </div>
 </footer>
 
+<!-- ===== JS ===== -->
 <script>
 // Появление элементов при скролле
 const faders = document.querySelectorAll('.fade-up');
 const appearOptions = { threshold:0.2, rootMargin:"0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver(function(entries, observer){
+const appearOnScroll = new IntersectionObserver((entries, observer)=>{
   entries.forEach(entry=>{
-    if(!entry.isIntersecting) return;
-    entry.target.classList.add('show');
-    observer.unobserve(entry.target);
+    if(entry.isIntersecting){ entry.target.classList.add('show'); observer.unobserve(entry.target); }
   });
 }, appearOptions);
-
 faders.forEach(fader => appearOnScroll.observe(fader));
-
-// Lightbox для портфолио
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const lightboxClose = document.getElementById('lightbox-close');
-
-document.addEventListener('DOMContentLoaded', ()=>{
-  document.querySelectorAll('.portfolio-item img').forEach(img=>{
-    img.style.cursor = 'pointer';
-    img.addEventListener('click', ()=>{
-      lightboxImg.src = img.src;
-      lightbox.style.display = 'flex';
-    });
-  });
-});
 
 // Бургер-меню
 const burger = document.getElementById('burger');
 const siteNav = document.getElementById('site-nav');
 const mainMenu = document.getElementById('main-menu');
+function openMenu(){ burger.classList.add('open'); burger.setAttribute('aria-expanded','true'); siteNav.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeMenu(){ burger.classList.remove('open'); burger.setAttribute('aria-expanded','false'); siteNav.classList.remove('open'); document.body.style.overflow=''; }
+burger.addEventListener('click', ()=>burger.getAttribute('aria-expanded')==='true'?closeMenu():openMenu());
+mainMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>closeMenu()));
+document.addEventListener('click', e=>{ if(siteNav.classList.contains('open') && !siteNav.contains(e.target)) closeMenu(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeMenu(); });
 
-function openMenu(){
-  burger.classList.add('open');
-  burger.setAttribute('aria-expanded','true');
-  siteNav.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeMenu(){
-  burger.classList.remove('open');
-  burger.setAttribute('aria-expanded','false');
-  siteNav.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-burger.addEventListener('click', (e)=>{
-  const expanded = burger.getAttribute('aria-expanded') === 'true';
-  if(expanded) closeMenu(); else openMenu();
+// Lightbox
+const lightbox = document.createElement('div'); lightbox.id='lightbox';
+lightbox.style.cssText='display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:9999;';
+const lbImg = document.createElement('img'); lbImg.style.maxWidth='90%'; lbImg.style.maxHeight='90%'; lbImg.style.borderRadius='16px'; lbImg.style.boxShadow='0 0 30px rgba(0,0,0,0.7)';
+lightbox.appendChild(lbImg);
+document.body.appendChild(lightbox);
+document.querySelectorAll('.portfolio-item img').forEach(img=>{
+  img.style.cursor='pointer';
+  img.addEventListener('click',()=>{ lbImg.src=img.src; lightbox.style.display='flex'; });
 });
-
-// Закрытие при клике по ссылке
-mainMenu.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> closeMenu()));
-
-// Закрытие при клике вне меню
-document.addEventListener('click', (e)=>{
-  if(!siteNav.classList.contains('open')) return;
-  if(siteNav.contains(e.target)) return; // клик внутри навигации
-  closeMenu();
-});
-
-// Esc для закрытия
-document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeMenu(); });
-</script>
-
-<!-- Lightbox markup -->
-<div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:9999;">
-  <span id="lightbox-close" style="position:absolute; top:20px; right:30px; font-size:36px; color:#fff; cursor:pointer;">&times;</span>
-  <img id="lightbox-img" src="" alt="Фото" style="max-width:90%; max-height:90%; border-radius:16px; box-shadow:0 0 30px rgba(0,0,0,0.7);">
-</div>
-
-<script>
-// Lightbox handlers (делаем отдельно, чтобы работало и после динамики)
-lightboxClose.addEventListener('click', ()=> lightbox.style.display='none');
-lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) lightbox.style.display='none'; });
+lightbox.addEventListener('click', e=>{ if(e.target===lightbox) lightbox.style.display='none'; });
 </script>
 
 </body>
